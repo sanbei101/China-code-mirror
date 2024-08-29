@@ -4,7 +4,7 @@
 
 
 ``` shell
-git config --global url."https://github.cau-ghr.tech/".insteadOf "github.com:"
+git config --global url."https://github.cau-ghr.tech/".insteadOf "https://github.com/"
 ```
 
 这个命令就在克隆的仓库前面加上了`镜像`前缀
