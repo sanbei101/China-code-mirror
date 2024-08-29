@@ -4,7 +4,7 @@
 
 
 ``` shell
-git config --global url."https://github.cau-ghr.tech/".insteadOf "https://github.com/"
+git config --global url."https://github.cau-ghr.tech/".insteadOf "github.com:"
 ```
 
 这个命令就在克隆的仓库前面加上了`镜像`前缀
@@ -14,4 +14,45 @@ git config --global url."https://github.cau-ghr.tech/".insteadOf "https://github
 **验证生效**
 ``` shell
 git config --global --list
+```
+
+
+## 加速 Github 其他资源网络解决方案
+
+### 在`Bash`环境下
+
+可以使用alias来解决这个问题,复制以下命令到Bash,即可更改`wget`默认将`github`加上前缀下载地址`github.cau-ghr.tech`
+
+``` shell
+alias wget='function _wget(){ 
+  for arg in "$@"; do 
+    if [[ "$arg" == https://github.com* ]]; then 
+      arg="https://github.cau-ghr.tech/$arg"; 
+    fi; 
+    args+=("$arg"); 
+  done; 
+  command wget "${args[@]}"; 
+  unset args; 
+}; _wget'
+```
+
+### 在`fish`环境下
+
+由于fish不支持alias,可以使用fish自带的fuction来配置,将以下命令复制到fish配置文件中`~/.config/fish/config.fish`
+
+``` shell
+function wget
+    set args
+    for arg in $argv
+        if string match -r '^https://github\.com' $arg
+            set arg "https://github.cau-ghr.tech/$arg"
+        end
+        set args $args $arg
+    end
+    command wget $args
+end
+```
+然后再让配置文件生效
+``` shell
+source ~/.config/fish/config.fish
 ```
