@@ -1,0 +1,29 @@
+services:
+  postgresql:
+    # 使用 Bitnami 提供的 PostgreSQL 镜像
+    image: 'bitnami/postgresql:latest'
+    # 容器名称
+    container_name: 'postgresql'
+    environment:
+      # bitnami/postgresql会默认创建一个非超级用户,拥有对初始化数据库的权限,更加安全
+      - POSTGRESQL_USERNAME=myuser
+      # 设置 初始用户密码
+      - POSTGRESQL_PASSWORD=secretpassword
+      # 设置 PostgreSQL 初始化数据库
+      - POSTGRESQL_DATABASE=mydatabase
+      # 设置 PostgreSQL 超级用户postgres的密码,不设置则无法以超级用户身份登录
+      - POSTGRESQL_POSTGRES_PASSWORD=Supersecretpassword
+      # 允许远程连接
+      - POSTGRESQL_ALLOW_REMOTE_CONNECTIONS=yes
+    ports:
+      # 映射本地 5432 端口到容器的 5432 端口
+      - '5432:5432'
+
+    volumes:
+      # 挂载本地卷到容器中的 /bitnami/postgresql 目录
+      - 'postgresql_data:/bitnami/postgresql'
+
+volumes:
+    postgresql_data:
+      # 使用本地驱动器
+      driver: local
