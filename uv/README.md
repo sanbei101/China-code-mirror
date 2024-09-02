@@ -31,3 +31,12 @@ uv run fastapi dev main.py
 ```shell
 source ./.venv/bin/
 ```
+
+## uvx的使用
+
+`uvx`是`uv tool run`的别名,可以快速运行一些检查工具如`ruff`,但是`tool`工具不遵循项目级的配置文件,配置镜像需要在
+`~/.config/uv/uv.toml`配置
+
+```toml
+index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+```
