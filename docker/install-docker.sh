@@ -6,7 +6,7 @@ export DOWNLOAD_URL="https://mirrors.tuna.tsinghua.edu.cn/docker-ce"
 
 # 第二步：脚本一键安装
 echo "开始一键安装 Docker..."
-wget -O- https://gitee.com/tech-shrimp/docker_installer/releases/download/latest/linux.sh | sudo -E sh
+wget -O- https://gitee.com/tech-shrimp/docker_installer/releases/download/latest/linux.sh --no-check-certificate| sudo -E sh
 
 # 第三步：更改 Docker 镜像源
 echo "更改 Docker 镜像源..."
