@@ -12,7 +12,7 @@ wget -O- https://gitee.com/tech-shrimp/docker_installer/releases/download/latest
 echo "更改 Docker 镜像源..."
 sudo tee /etc/docker/daemon.json > /dev/null <<EOF
 {
-  "registry-mirrors": ["https://docker.cau-ghr.tech"]
+  "registry-mirrors": ["https://docker.gzh031.workers.dev"]
 }
 EOF
 
