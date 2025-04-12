@@ -4,7 +4,7 @@
 
 
 ``` shell
-git config --global url."https://github-speed.gzh031.workers.dev/https://github.com".insteadOf "https://github.com"
+git config --global url."https://github.sanbei101.xyz/https://github.com".insteadOf "https://github.com"
 ```
 
 这个命令就在克隆的仓库前面加上了`镜像`前缀
@@ -27,7 +27,7 @@ git config --global --list
 alias wget='function _wget(){ 
   for arg in "$@"; do 
     if [[ "$arg" == https://github.com* ]]; then 
-      arg="https://github-speed.gzh031.workers.dev/$arg"; 
+      arg="https://github.sanbei101.xyz/$arg"; 
     fi; 
     args+=("$arg"); 
   done; 
@@ -45,7 +45,7 @@ function wget
     set args
     for arg in $argv
         if string match -r '^https://github\.com' $arg
-            set arg "https://github-speed.gzh031.workers.dev/$arg"
+            set arg "https://github.sanbei101.xyz/$arg"
         end
         set args $args $arg
     end
